@@ -27,4 +27,58 @@ def eth_price():
     price = dict['last_price']
     return price
 
-print(eth_price())
+def sol_price():
+    session_unauth = inverse_perpetual.HTTP(
+      endpoint="https://api-testnet.bybit.com"
+    )
+    info = session_unauth.latest_information_for_symbol(
+      symbol="SOLUSD")
+
+    new_info = info["result"]   
+
+    dict = new_info[0]
+    price = dict['last_price']
+    return price
+
+def ltc_price():
+    session_unauth = inverse_perpetual.HTTP(
+      endpoint="https://api-testnet.bybit.com"
+    )
+    info = session_unauth.latest_information_for_symbol(
+      symbol="LTCUSD")
+
+    new_info = info["result"]   
+
+    dict = new_info[0]
+    price = dict['last_price']
+    return price
+
+def xrp_price():
+    session_unauth = inverse_perpetual.HTTP(
+      endpoint="https://api-testnet.bybit.com"
+    )
+    info = session_unauth.latest_information_for_symbol(
+      symbol="XRPUSD")
+
+    new_info = info["result"]   
+
+    dict = new_info[0]
+    price = dict['last_price']
+    return price
+
+def bit_price():
+    session_unauth = inverse_perpetual.HTTP(
+      endpoint="https://api-testnet.bybit.com"
+    )
+    info = session_unauth.latest_information_for_symbol(
+      symbol="BITUSD")
+
+    new_info = info["result"]   
+
+    dict = new_info[0]
+    price = dict['last_price']
+    return price
+
+print(bit_price())
+
+
