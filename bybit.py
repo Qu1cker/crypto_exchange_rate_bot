@@ -79,6 +79,6 @@ def bit_price():
     price = dict['last_price']
     return price
 
-print(bit_price())
+
 
 

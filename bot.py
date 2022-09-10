@@ -2,7 +2,7 @@ import telebot
 from telebot import types
 import bybit
 
-token = '5504182734:AAHlaMsKvJlt0MdQL3QoQn6jfrJnm1k3C28'
+token = ''
 
 bot = telebot.TeleBot(token)
 
