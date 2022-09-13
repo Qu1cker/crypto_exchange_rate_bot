@@ -26,7 +26,8 @@ def add_button(token: str, callback: str) -> types.InlineKeyboardButton:
 
 @bot.message_handler(content_types=['text'])
 def add_coin_f(message):
-    if message.text == "Realtime rates":
+    if message.text != "Realtime rates":
+        return
         keyboard = types.InlineKeyboardMarkup()
 
         buttonBTC = Button('BTC', 'BTC')
