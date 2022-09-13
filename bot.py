@@ -19,7 +19,7 @@ def button_message(message):
     markup.add(item1)
     bot.send_message(message.chat.id,'Click the button below :)',reply_markup=markup)
 
-def Button(token, call):
+def add_button(token: str, callback: str) -> types.InlineKeyboardButton:
     keyboard_button = types.InlineKeyboardButton(text = token, callback_data= call)
     return keyboard_button
 
