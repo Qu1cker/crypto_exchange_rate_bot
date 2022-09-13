@@ -20,22 +20,21 @@ def button_message(message):
     bot.send_message(message.chat.id,'Click the button below :)',reply_markup=markup)
 
 def add_button(token: str, callback: str) -> types.InlineKeyboardButton:
-    keyboard_button = types.InlineKeyboardButton(text = token, callback_data= call)
+    keyboard_button = types.InlineKeyboardButton(text = token, callback_data= callback)
     return keyboard_button
 
 
 @bot.message_handler(content_types=['text'])
 def add_coin_f(message):
-    if message.text != "Realtime rates":
-        return
+    if message.text == "Realtime rates":
         keyboard = types.InlineKeyboardMarkup()
 
-        buttonBTC = Button('BTC', 'BTC')
-        buttonETH = Button('ETH', 'ETH')
-        buttonSol = Button('Solana', 'SOL')
-        buttonLTC = Button('LiteCoin', 'LTC')
-        buttonBIT = Button('BitDAO', 'BIT')
-        buttonXRP = Button('Ripple', 'XRP')
+        buttonBTC = add_button('BTC', 'BTC')
+        buttonETH = add_button('ETH', 'ETH')
+        buttonSol = add_button('Solana', 'SOL')
+        buttonLTC = add_button('LiteCoin', 'LTC')
+        buttonBIT = add_button('BitDAO', 'BIT')
+        buttonXRP = add_button('Ripple', 'XRP')
 
         keyboard.add(buttonBTC, buttonETH, buttonSol, buttonLTC, buttonBIT, buttonXRP)
         bot.send_message(message.from_user.id, text = 'Сhoose a cryptocurrency to see the price', reply_markup= keyboard)
@@ -49,29 +48,6 @@ def call_back_btc(callback):
     message_price = f'{token} price = {end_price}'
     bot.send_message(callback.message.chat.id, message_price)
 
-
-
-    # if callback.data == 'btc':
-    #     price_crypto = bybit.btc_price()
-    #     message_price = 'BitCoin price = ' + price_crypto
-    # elif callback.data == 'eth':
-    #     price_crypto = bybit.eth_price()
-    #     message_price = 'Ethereum price = ' + price_crypto  
-    # elif callback.data == 'sol':
-    #     price_crypto = bybit.sol_price()
-    #     message_price = 'Solana price = ' + price_crypto    
-    # elif callback.data == 'ltc':
-    #     price_crypto = bybit.ltc_price()
-    #     message_price = 'LiteCoin price = ' + price_crypto   
-    # elif callback.data == 'xrp':
-    #     price_crypto = bybit.xrp_price()
-    #     message_price = 'Ripple price = ' + price_crypto
-    # elif callback.data == 'bit':
-    #     price_crypto = bybit.bit_price()
-    #     message_price = 'BitDAO price = ' + price_crypto                
-    # bot.send_message(callback.message.chat.id, message_price)
-    
-    
 
 bot.infinity_polling()
 
